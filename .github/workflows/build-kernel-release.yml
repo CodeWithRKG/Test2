@@ -96,11 +96,11 @@ jobs:
       - name: Upload Release Assets Dynamically
         run: |
           for file in ./downloaded-artifacts/kernel-*/*; do
-              if [ -d "$file" ]; then
-                  continue
-              fi
-              echo "Uploading $file..."
-              gh release upload ${{ env.NEW_TAG }} "$file"
+      if [ -d "$file" ]; then
+          continue
+      fi
+      echo "Uploading $file..."
+      gh release upload v1.5.5-r5 "$file"
 done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
