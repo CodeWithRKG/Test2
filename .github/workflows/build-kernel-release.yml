@@ -41,8 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.make_release }}
     env:
-      REPO_OWNER: TheWildJames
-      REPO_NAME: OnePlus_KernelSU_SUSFS
+      REPO_OWNER: CodeWithRKG
+      REPO_NAME: Test2
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RELEASE_NAME: "*TEST BUILD* OnePlus Kernels With KernelSU Next & SUSFS v1.5.5 *TEST BUILD*"
       RELEASE_NOTES: |
