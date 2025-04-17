@@ -1,4 +1,4 @@
-name: Build and Release OnePlus Kernels
+name: Release to Repo with BBR
 
 permissions:
   contents: write
@@ -19,11 +19,11 @@ jobs:
       fail-fast: false
       matrix:
         include:          
-          - model: OP-NORD-4
+          - model: OP-NORD4
             soc: pineapple
             branch: oneplus/sm7675
             manifest: oneplus_nord_4_v.xml
-            android_version: android14
+            android_version: android15
             kernel_version: "6.1"
     uses: ./.github/workflows/build.yml
     secrets: inherit
@@ -44,9 +44,12 @@ jobs:
       REPO_OWNER: CodeWithRKG
       REPO_NAME: Test2
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      RELEASE_NAME: "*TEST BUILD* OnePlus Kernels With KernelSU Next & SUSFS v1.5.5 *TEST BUILD*"
+      RELEASE_NAME: "*Susfs Patched Kernels With KernelSU Next and BBR"
       RELEASE_NOTES: |
         This release contains KernelSU Next and SUSFS v1.5.5
+
+        Kernel Flasher: 
+        -> https://github.com/fatalcoder524/KernelFlasher
 
         Module: 
         -> https://github.com/sidex15/ksu_module_susfs
@@ -57,10 +60,7 @@ jobs:
         Features:
         [+] KernelSU-Next
         [+] SUSFS v1.5.5
-        [+] Wireguard Support
-        [+] Maphide LineageOS Detections
-        [+] Futile Maphide for jit-zygote-cache Detections
-        [+] Magic Mount Support
+        [+] BBR
 
     steps:
       - name: Checkout code
