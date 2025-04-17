@@ -44,7 +44,7 @@ jobs:
       REPO_OWNER: CodeWithRKG
       REPO_NAME: Test2
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      RELEASE_NAME: "*Susfs Patched Kernels With KernelSU Next and BBR"
+      RELEASE_NAME: "*Susfs Patched Kernels With KernelSU Next and BBR*"
       RELEASE_NOTES: |
         This release contains KernelSU Next and SUSFS v1.5.5
 
