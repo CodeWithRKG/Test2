@@ -377,7 +377,7 @@ jobs:
           ui_print "-> TCP Congestion Algorithm: BBR enabled"' anykernel.sh
           
           # Zip the files in the AnyKernel3 directory with a new naming convention
-          ZIP_NAME="Susfs-Kernel_${{ env.KSUVER }}_${{ env.CONFIG }}_${{ TZ=Asia/Kolkata date +'%d-%m-%Y_%I-%M-%p'}}_RKG.zip"
+          ZIP_NAME="Susfs-Kernel_${{ env.KSUVER }}_${{ env.CONFIG }}_${{ TZ=Asia/Kolkata date +'%d-%m-%Y_%I-%M-%p' }}_RKG.zip"
           echo "Creating zip file $ZIP_NAME..."
           zip -r "../$ZIP_NAME" ./*
           
