@@ -284,9 +284,9 @@ jobs:
           
           # Run sed commands for modifications
           sed -i 's/check_defconfig//' ./common/build.config.gki
-          sed -i '$s|echo "\$res"|echo "\$res-fatalcoder524"|' ./common/scripts/setlocalversion
-          sed -i '$s|echo "\$res"|echo "\$res-fatalcoder524"|' ./msm-kernel/scripts/setlocalversion
-          sed -i '$s|echo "\$res"|echo "\$res-fatalcoder524"|' ./external/dtc/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$res"|' ./common/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$res"|' ./msm-kernel/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$res"|' ./external/dtc/scripts/setlocalversion
           sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl || echo "No stamp.bzl!"
           sed -i 's/-dirty//' ./common/scripts/setlocalversion
           sed -i 's/-dirty//' ./msm-kernel/scripts/setlocalversion
@@ -357,10 +357,15 @@ jobs:
         run: |
           echo "Navigating to AnyKernel3 directory..."
           cd ./AnyKernel3
+          
+          sed -i 's|^kernel\.string=.*|kernel.string=OnePlus Nord 4 KSUN + SUSFS Kernel by CodeWithRKG|' anykernel.sh
+          sed -i 's|^do\.devicecheck=.*|do.devicecheck=1|' anykernel.sh
+          sed -i 's|^device\.name1=.*|device.name1=CPH2661|' anykernel.sh
+          sed -i 's|^device\.name2=.*|device.name2=CPH2663|' anykernel.sh
           sed -i '/ui_print " " "  -> ksu_supported: $ksu_supported"/i \
           ui_print "Features:"\
-          ui_print "-> KernelSU-Next-Official v1.0.6 (12490) "\
-          ui_print "-> SUSFS ඞ v1.5.5"\
+          ui_print "-> KernelSU-Next-Official"\
+          ui_print "-> SUSFS"\
           ui_print "-> Manual Hooks for Better Hiding"\
           ui_print "-> Wireguard Support"\
           ui_print "-> Simple Maphide for LineageOS Detections"\
