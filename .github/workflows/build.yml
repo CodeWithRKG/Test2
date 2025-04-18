@@ -352,9 +352,9 @@ jobs:
           
           echo "Copying Image"
           cp ./out/dist/Image ../AnyKernel3/Image
-          
-       - name: Copy Imag
-         run: |         
+
+      - name: Indian Time Setup
+        run: |
           IST_TIME="$(TZ=Asia/Kolkata date +'%d-%m-%Y_%I-%M-%p')"
 
       - name: Create ZIP File
