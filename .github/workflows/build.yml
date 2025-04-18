@@ -107,8 +107,8 @@ jobs:
           
           # Initialize and sync kernel source
           echo "Initializing and syncing kernel source..."
-          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b oneplus/sm7675 -m oneplus_nord_4_v.xml --depth=1 || { echo "Failed to initialize repo"; exit 1; }
-          repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags || { echo "Failed to sync repo"; exit 1; }
+          $repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b oneplus/sm7675 -m oneplus_nord_4_v.xml --depth=1 || { echo "Failed to initialize repo"; exit 1; }
+          $repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags || { echo "Failed to sync repo"; exit 1; }
           rm -rf ./kernel_platform/common/android/abi_gki_protected_exports_*
       
       - name: Add KernelSU
@@ -357,7 +357,7 @@ jobs:
           cd ./AnyKernel3
           
           sed -i 's|^kernel\.string=.*|kernel.string=OnePlus Nord 4 KSUN + SUSFS Kernel by CodeWithRKG|' anykernel.sh
-          sed -i 's|^do\.devicecheck=.*|do.devicecheck=1|' anykernel.sh
+          sed -i 's|^do\.devicecheck=.*|do.devicecheck=0|' anykernel.sh
           sed -i 's|^device\.name1=.*|device.name1=CPH2661|' anykernel.sh
           sed -i 's|^device\.name2=.*|device.name2=CPH2663|' anykernel.sh
           sed -i '/ui_print " " "  -> ksu_supported: $ksu_supported"/i \
