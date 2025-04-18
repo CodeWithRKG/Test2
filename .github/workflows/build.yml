@@ -376,7 +376,8 @@ jobs:
     ui_print "-> TCP Congestion Algorithm: BBR enabled"' anykernel.sh
     
     # Calculate Indian Standard Time (IST)
-IST_TIME=$(date -u +"%d-%m-%Y_%I-%M-%p" -d "+5 hours 30 minutes")
+    
+IST_TIME=$(TZ=Asia/Kolkata date +"%d-%m-%Y_%I-%M-%p")
 
     # Zip the files in the AnyKernel3 directory with IST in the naming convention
     ZIP_NAME="Susfs-Kernel_${{ env.KSUVER }}_${{ env.CONFIG }}_${IST_TIME}_RKG.zip"
