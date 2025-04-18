@@ -353,36 +353,33 @@ jobs:
           echo "Copying Image"
           cp ./out/dist/Image ../AnyKernel3/Image
 
-      - name: Create ZIP Files
+      - name: Create ZIP Files for Different Formats
         run: |
           echo "Navigating to AnyKernel3 directory..."
           cd ./AnyKernel3
+          
           sed -i 's|^kernel\.string=.*|kernel.string=OnePlus 11 KSUN + SUSFS Kernel by fatalcoder524|' anykernel.sh
           sed -i 's|^do\.devicecheck=.*|do.devicecheck=1|' anykernel.sh
           sed -i 's|^device\.name1=.*|device.name1=CPH2447|' anykernel.sh
           sed -i 's|^device\.name2=.*|device.name2=CPH2449|' anykernel.sh
           sed -i 's|^device\.name3=.*|device.name3=CPH2451|' anykernel.sh
           sed -i 's|^device\.name4=.*|device.name4=PHB110|' anykernel.sh
-    sed -i '/ui_print " " "  -> ksu_supported: $ksu_supported"/i \
-         ui_print "Features:"\
-         ui_print "-> KernelSU-Next-Official v1.0.6 (12490) "\
-         ui_print "-> SUSFS ඞ v1.5.5"\
-         ui_print "-> Manual Hooks for Better Hiding"\
-         ui_print "-> Wireguard Support"\
-         ui_print "-> Simple Maphide for LineageOS Detections"\
-         ui_print "-> Futile Maphide for jit-zygote-cache Detections"\
-         ui_print "-> Magic Mount Support"\
-        ui_print "-> CONFIG_TMPFS_XATTR Support for Mountify"\
-    ui_print "-> TCP Congestion Algorithm: BBR enabled"' anykernel.sh
-    
-    # Calculate Indian Standard Time (IST)
-    
-IST_TIME=$(TZ=Asia/Kolkata date +"%d-%m-%Y_%I-%M-%p")
-
-    # Zip the files in the AnyKernel3 directory with IST in the naming convention
-    ZIP_NAME="Susfs-Kernel_${{ env.KSUVER }}_${{ env.CONFIG }}_${IST_TIME}_RKG.zip"
-    echo "Creating zip file $ZIP_NAME..."
-    zip -r "../$ZIP_NAME" ./*
+          sed -i '/ui_print " " "  -> ksu_supported: $ksu_supported"/i \
+          ui_print "Features:"\
+          ui_print "-> KernelSU-Next-Official v1.0.6 (12490) "\
+          ui_print "-> SUSFS ඞ v1.5.5"\
+          ui_print "-> Manual Hooks for Better Hiding"\
+          ui_print "-> Wireguard Support"\
+          ui_print "-> Simple Maphide for LineageOS Detections"\
+          ui_print "-> Futile Maphide for jit-zygote-cache Detections"\
+          ui_print "-> Magic Mount Support"\
+          ui_print "-> CONFIG_TMPFS_XATTR Support for Mountify"\
+          ui_print "-> TCP Congestion Algorithm: BBR enabled"' anykernel.sh
+          
+          # Zip the files in the AnyKernel3 directory with a new naming convention
+          ZIP_NAME="Susfs-Kernel_${{ env.KSUVER }}_${{ env.CONFIG }}_${IST_TIME}_RKG.zip"
+          echo "Creating zip file $ZIP_NAME..."
+          zip -r "../$ZIP_NAME" ./*
           
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
