@@ -357,13 +357,6 @@ jobs:
         run: |
           echo "Navigating to AnyKernel3 directory..."
           cd ./AnyKernel3
-          
-          sed -i 's|^kernel\.string=.*|kernel.string=OnePlus 11 KSUN + SUSFS Kernel by fatalcoder524|' anykernel.sh
-          sed -i 's|^do\.devicecheck=.*|do.devicecheck=1|' anykernel.sh
-          sed -i 's|^device\.name1=.*|device.name1=CPH2447|' anykernel.sh
-          sed -i 's|^device\.name2=.*|device.name2=CPH2449|' anykernel.sh
-          sed -i 's|^device\.name3=.*|device.name3=CPH2451|' anykernel.sh
-          sed -i 's|^device\.name4=.*|device.name4=PHB110|' anykernel.sh
           sed -i '/ui_print " " "  -> ksu_supported: $ksu_supported"/i \
           ui_print "Features:"\
           ui_print "-> KernelSU-Next-Official v1.0.6 (12490) "\
